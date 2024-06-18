@@ -4,7 +4,7 @@ services:
   web:
     build:
       context: ./django/
-    image: 778427007994.dkr.ecr.us-east-1.amazonaws.com/ilovebees-django:web
+    image: 658435454654.dkr.ecr.us-east-1.amazonaws.com/django-on-docker:web
     volumes:
       - ./django/:/usr/src/app/
       - static_files:/usr/src/app/staticfiles
@@ -17,7 +17,7 @@ services:
     container_name: nginx-proxy
     build:
       context: ./nginx/
-    image: 778427007994.dkr.ecr.us-east-1.amazonaws.com/ilovebees-django:nginx-proxy
+    image: 658435454654.dkr.ecr.us-east-1.amazonaws.com/django-on-docker:nginx-proxy
     restart: always
     ports:
       - "443:443"
