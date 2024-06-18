@@ -1,0 +1,139 @@
+:root {
+  --c-text-primary: #282a32;
+  --c-text-secondary: #686b87;
+  --c-text-action: #404089;
+  --c-accent-primary: #434ce8;
+  --c-border-primary: #eff1f6;
+  --c-background-primary: #ffffff;
+  --c-background-secondary: #fdfcff;
+  --c-background-tertiary: #ecf3fe;
+  --c-background-quaternary: #e9ecf4;
+}
+
+body {
+  background: #ecf0f3;
+  margin-top: 100px;
+  margin-bottom: 50px;
+  margin-left: 18%;
+  margin-right: 18%;
+  display: flex;
+  flex-direction: row;
+  font-family: Mukta;
+  flex: 1;
+}
+
+/* Charts */
+
+main section[role="chart"] {
+  margin-bottom: 20px;
+  background-color: var(--c-background-primary);
+  box-shadow: 0 3px 3px 0 rgba(0, 0, 0, 0.05), 0 5px 15px 0 rgba(0, 0, 0, 0.05);
+  border-radius: 8px;
+  overflow: hidden;
+  display: flex;
+  flex-direction: column;
+  margin-left: 1em;
+  background-color: var(--white);
+  border-radius: 2em;
+  margin-bottom: 1em;
+  padding: 0.7em;
+  padding-bottom: 5em;
+  box-sizing: border-box;
+}
+
+section[role="chart"] .title {
+  font-size: 20px;
+  color: var(--black);
+  font-weight: 650;
+  margin-left: 1rem;
+  margin-top: 1.35rem;
+}
+
+main section[role="chart"].line {
+  width: calc(100% - 150px);
+  height: 400px;
+}
+
+
+/* Cards */ 
+
+.card {
+  width: 100%;
+  margin-bottom: 30px;
+  background-color: var(--c-background-primary);
+  box-shadow: 0 8px 8px 0 rgba(0, 0, 0, 0.05), 0 5px 15px 0 rgba(0, 0, 0, 0.05);
+  border-radius: 18px;
+  overflow: hidden;
+  display: flex;
+  flex-direction: column;
+}
+
+.card-header {
+  display: flex;
+  align-items: flex-start;
+  justify-content: space-between;
+  padding: 1.5rem 1.25rem 1rem 1.25rem;
+}
+.card-header div {
+  display: flex;
+  align-items: center;
+}
+.card-header div span {
+  width: 40px;
+  height: 40px;
+  border-radius: 8px;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+}
+.card-header div span img {
+  max-height: 100%;
+}
+.card-header div h3 {
+  margin-left: 0.75rem;
+  font-weight: 500;
+}
+
+.card-body {
+  padding: 1rem 1.25rem;
+  margin-left: 3%;
+  margin-right: 3%;
+  font-size: 0.875rem;
+}
+
+.card-body-table {
+  position:relative;
+}
+
+.card-body-chart-line {
+  position:relative;
+  width:90%;
+  min-height: 250px;
+  height:100%;
+  height: 300px;
+  padding: 1rem 1.25rem;
+  font-size: 0.875rem;
+}
+
+.card-footer {
+  margin-top: auto;
+  padding: 1rem 1.25rem;
+  display: flex;
+  align-items: center;
+  justify-content: flex-end;
+  border-top: 1px solid var(--c-border-primary);
+}
+
+.card-footer-chart-slider {
+  padding-top: 1rem;
+  padding-bottom: 1rem;
+  display: center;
+  border-top: 1px solid var(--c-border-primary);
+}
+
+.card-footer a {
+  color: var(--c-text-action);
+  text-decoration: none;
+  font-weight: 500;
+  font-size: 0.875rem;
+}
