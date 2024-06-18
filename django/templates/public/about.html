@@ -1,0 +1,61 @@
+{% load static %}
+{% block content %}
+
+<!DOCTYPE html>
+<html lang="en">
+
+    <head>
+        <meta charset="utf-8">
+        <title>About</title>
+        <!-- Favicons -->
+        <link rel="icon" type="image/x-icon" href='{% static "public/icons/letter.ico" %}'/>
+        <!-- Google Fonts -->
+        <link href="https://fonts.googleapis.com/css2?family=Lato:wght@300;400;700;900&family=Mukta:wght@300;400;600;700;800&family=Noto+Sans:wght@400;700&display=swap" rel="stylesheet">
+<link href="https://fonts.cdnfonts.com/css/tesla-2" rel="stylesheet">
+        <link href="https://fonts.cdnfonts.com/css/matrix-code-nfi" rel="stylesheet">
+        <link href="https://fonts.cdnfonts.com/css/smw-text-nc" rel="stylesheet">        
+<!-- Template Main CSS File -->
+        <link rel="stylesheet" type="text/css" href='{% static "public/css/about.css" %}'>
+        <link rel="stylesheet" type="text/css" href='{% static "public/css/base.css" %}'>
+        <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.6.3/css/font-awesome.css" rel="stylesheet">
+        <!-- Chart.js/2.9.4 -->
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/2.9.4/Chart.min.js"></script>
+    </head>
+
+{% include 'public/navbar.html' %}
+
+<div class="person">
+    <div class="container">
+      <div class="container-inner">
+        <img class="circle" src='{% static "public/img/about.PNG" %}'>
+      </div>
+    </div>
+    <div class="divider"></div>
+    <div style="font-family: 'SMW Text 2 NC';" class="name">Pietro Amin Puddu</div>
+
+    <div title="pietroamin.puddu@gmail.com" class="social-icons">
+      <a href="mailto: pietroamin.puddu@gmail.com" style="color:#000000" class="social-icon">
+       <i class="fa fa-envelope"></i>
+     </a>
+     <a title="GitHub/BloomShell" href="https://github.com/BloomShell" style="color:#000000" class="social-icon">
+       <i class="fa fa-github"></i>
+     </a>
+     <a title="Linkedin/PietroAminPuddu" href="https://www.linkedin.com/in/pietroaminpuddu/" style="color:#000000" class="social-icon">
+       <i class="fa fa-linkedin"></i>
+     </a>
+     <a title="Resume" href="https://drive.google.com/file/d/17WM0P4vh2-de5PqINzXNX0BpRStWw4Sc/view?usp=sharing"
+        style="color:#000000" class="social-icon">
+       <i class="fa fa-user"></i>
+     </a>
+   </div>
+
+</div>
+
+    <footer>
+  <p class="copyright">© BloomShell 2022</p>
+</footer>
+
+
+{% endblock %}
+
+</html>

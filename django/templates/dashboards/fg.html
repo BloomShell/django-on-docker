@@ -1,0 +1,181 @@
+{% load static %}
+{% block content %}
+{{ dates|json_script:'index' }}
+{{ nyse|json_script:'data0' }}
+{{ nasdaq|json_script:'data1' }}
+
+<!DOCTYPE html>
+<html lang="en">
+
+    <head>
+        <meta charset="utf-8">
+        <title>Fear & Greed Index</title>
+        <!-- Favicons -->
+        <link rel="icon" type="image/x-icon" href='{% static "public/icons/letter.ico" %}'/>
+        <!-- Google Fonts -->
+        <link href="https://fonts.googleapis.com/css2?family=Lato:wght@300;400;700;900&family=Mukta:wght@300;400;600;700;800&family=Noto+Sans:wght@400;700&display=swap" rel="stylesheet">
+        <!-- Template Main CSS File -->
+        <link rel="stylesheet" type="text/css" href='{% static "dashboards/css/dashboards.css" %}'>
+        <link rel="stylesheet" type="text/css" href='{% static "dashboards/css/tables.css" %}'>
+        <link rel="stylesheet" type="text/css" href='{% static "dashboards/css/sliders.css" %}'>
+        <link rel="stylesheet" type="text/css" href='{% static "public/css/base.css" %}'>
+        <!-- Chart.js/2.9.4 -->
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/2.9.4/Chart.min.js"></script>
+    </head>
+
+{% include 'public/navbar.html' %}
+
+<main>
+  <body>
+
+    <article class="card">
+      <div class="card-header">
+        <div>
+          <span><img src='{% static "dashboards/img/mark.png" %}' /></span>
+          <h3>Fear & Greed Index | OverView</h3>
+        </div>
+      </div>
+      <div class="card-body">
+        <p>An indicator of stock market activity and whether equities are appropriately valued is the Fear & Greed Index.
+          The hypothesis is grounded in the reasoning that extreme fear has a tendency to lower stock prices while excessive
+          greed has a tendency to have the opposite effect. Seven separate indicators that each gauge a different facet of stock
+          market behavior are combined:
+          <ul>
+            <li>Difference in 20-day stock and bond returns</li>
+            <li>VIX and its 50-day moving average</li>
+            <li>5-day average put/call ratio</li>
+            <li>McClellan Volume Summation Index</li>
+            <li>Net new 52-week highs and lows</li>
+            <li>S&P 500 and its 125-day moving average</li>
+            <li>Yield spread: junk bonds vs. investment grade</li>
+          </ul>
+        </p>
+      </div>
+      <div class="card-footer">
+      </div>
+    </article>
+
+    <article class="card">
+      <div class="card-header">
+        <div>
+          <span><img style="border-radius:10px" src='{% static "dashboards/img/chart.png" %}' /></span>
+          <h3>Fear & Greed Index | Sample Data</h3>
+        </div>
+      </div>
+      <div class="card-body-chart-line">
+        <canvas id="main-js-chart"></canvas>
+
+      </div>
+      <div class="card-footer-chart-slider">
+        <div class="centre">
+          <div class="middle">
+            <div class="multi-range-slider">
+              <input oninput="UpdatesSlider(this)" type="range" id="input-left" min="0" max="100" value="0">
+              <input oninput="UpdatesSlider(this)" type="range" id="input-right" min="0" max="100" value="100">
+              <div class="slider">
+                <div class="track"></div>
+                <div class="range"></div>
+                <div class="thumb left"></div>
+                <div class="thumb right"></div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </article>
+
+    <article class="card">
+      <div class="card-header">
+        <div>
+          <span><img width="35px" height="35px" src='{% static "dashboards/img/nyse.svg" %}' /></span>
+          <h3>Fear & Greed Index | Nyse Kpis</h3>
+        </div>
+      </div>
+      <div class="card-body-table">
+        <table>
+          <thead>
+            <tr>
+              <th>Time</th>
+              <th>Value</th>
+              <th>Momentum</th>
+              <th>Volatility</th>
+              <th>Skewness</th>
+              <th>Kurtosis</th>
+            </tr>
+          </thead>
+          <tbody>
+            {% for time, value, momentum, volatility, skewness, kurtosis in nyse_kpis %}
+            <tr>
+              <td>{{ time }}</td>
+              <td>{{ value }}</td>
+              {% if momentum > 0 %}
+                <td><p class="status status-paid">{{ momentum }}</p></td>
+              {% else %}
+                <td><p class="status status-unpaid">{{ momentum }}</p></td>
+              {% endif %}
+              <td>{{ volatility }}</td>
+              <td>{{ skewness }}</td>
+              <td>{{ kurtosis }}</td>
+            </tr>
+            {% endfor %}
+          </tbody>
+        </table>
+      </div>
+    </article>
+
+    <article class="card">
+      <div class="card-header">
+        <div>
+          <span><img style="border-radius:10px" src='{% static "dashboards/img/nasdaq.png" %}' /></span>
+          <h3>Fear & Greed Index | Nasdaq Kpis</h3>
+        </div>
+      </div>
+      <div class="card-body-table">
+        <table>
+          <thead>
+            <tr>
+              <th>Time</th>
+              <th>Value</th>
+              <th>Momentum</th>
+              <th>Volatility</th>
+              <th>Skewness</th>
+              <th>Kurtosis</th>
+            </tr>
+          </thead>
+          <tbody>
+            {% for time, value, momentum, volatility, skewness, kurtosis in nasdaq_kpis %}
+            <tr>
+              <td>{{ time }}</td>
+              <td>{{ value }}</td>
+              {% if momentum > 0 %}
+                <td><p class="status status-paid">{{ momentum }}</p></td>
+              {% else %}
+                <td><p class="status status-unpaid">{{ momentum }}</p></td>
+              {% endif %}
+              <td>{{ volatility }}</td>
+              <td>{{ skewness }}</td>
+              <td>{{ kurtosis }}</td>
+            </tr>
+            {% endfor %}
+          </tbody>
+        </table>
+      </div>
+    </article>
+
+
+  </body>
+
+  <footer>
+    <p class="copyright">© BloomShell 2022</p>
+  </footer>
+
+</main>
+
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/1.7.1/jquery.min.js" type="text/javascript"></script>
+<script src='{% static "dashboards/js/sliders.js" %}'></script>
+<script src='{% static "dashboards/js/dashboards.js" %}'
+            var label1 = "Nyse"; var label2 = "Nasdaq";></script>
+
+{% endblock %}
+
+</html>

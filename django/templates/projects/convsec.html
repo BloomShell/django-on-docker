@@ -1,0 +1,138 @@
+{% load static %}
+{% block content %}
+
+<!DOCTYPE html>
+<html lang="en">
+
+    <head>
+        <meta charset="utf-8">
+        <title>ConvSec</title>
+        <!-- Favicons -->
+        <link rel="icon" type="image/x-icon" href='{% static "public/icons/letter.ico" %}'/>
+        <!-- Google Fonts -->
+        <link href="https://fonts.googleapis.com/css2?family=Lato:wght@300;400;700;900&family=Mukta:wght@300;400;600;700;800&family=Noto+Sans:wght@400;700&display=swap" rel="stylesheet">
+        <!-- Template Main CSS File -->
+        <link rel="stylesheet" type="text/css" href='{% static "dashboards/css/dashboards.css" %}'>
+        <link rel="stylesheet" type="text/css" href='{% static "dashboards/css/tables.css" %}'>
+        <link rel="stylesheet" type="text/css" href='{% static "dashboards/css/sliders.css" %}'>
+        <link rel="stylesheet" type="text/css" href='{% static "public/css/base.css" %}'>
+        <!-- Chart.js/2.9.4 -->
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/2.9.4/Chart.min.js"></script>
+    </head>
+
+{% include 'public/navbar.html' %}
+
+<main>
+
+  <body>
+    <article class="card">
+      <div class="card-header">
+        <div>
+          <span><img src='{% static "dashboards/img/convsec.png" %}' /></span>
+          <h3>ConvSec | Sec Filings Extractor</h3>
+        </div>
+      </div>
+
+      <div class="card-body">
+          <h2>
+                 Overview
+          </h2>
+        <p>
+            The ConvSec Extractor extracts any text section from 10-Q, 10-K SEC filings,
+            and returns the extracted content in cleaned and standardized text. For each document
+            (cik, primaryDocument, accessionNumber) it returns the requested section name (e.g. Item 1A).
+
+          <h2>
+                Supported 10-Q Section Items
+          </h2>
+          <ul>
+              <li>Part 1</li>
+              <ul>
+                  <li>1 - Financial Statements</li>
+                  <li>2 - Management’s Discussion and Analysis of Financial Condition and Results of Operations</li>
+                  <li>3 - Quantitative and Qualitative Disclosures About Market Risk</li>
+                  <li>4 - Controls and Procedures</li>
+              </ul>
+              <li>Part 2</li>
+              <ul>
+                  <li>1 - Legal Proceedings</li>
+                  <li>1A - Risk Factors</li>
+                  <li>2 -Unregistered Sales of Equity Securities and Use of Proceeds</li>
+                  <li>3 - Defaults Upon Senior Securities</li>
+                  <li>4 - Mine Safety Disclosures</li>
+                  <li>5 - Other Information</li>
+                  <li>6 - Exhibits</li>
+              </ul>
+          </ul>
+
+          <h2>
+                Supported 10-K Section Items
+          </h2>
+          <ul>
+              <li>1 - Business</li>
+              <li>1A - Risk Factors</li>
+              <li>1B - Unresolved Staff Comments</li>
+              <li>2 - Properties</li>
+              <li>3 - Legal Proceedings</li>
+              <li>4 - Mine Safety Disclosures</li>
+              <li>5 - Market for Registrant’s Common Equity, Related Stockholder Matters and Issuer Purchases of Equity Securities</li>
+              <li>6 - Selected Financial Data</li>
+              <li>4 - Mine Safety Disclosures</li>
+              <li>5 - Other Information</li>
+              <li>6 - Exhibits</li>
+              <li>7 - Management’s Discussion and Analysis of Financial Condition and Results of Operations</li>
+              <li>7A - Quantitative and Qualitative Disclosures about Market Risk</li>
+              <li>8 - Financial Statements and Supplementary Data</li>
+              <li>9 - Changes in and Disagreements with Accountants on Accounting and Financial Disclosure</li>
+              <li>9A - Controls and Procedures</li>
+              <li>9B - Other Information</li>
+              <li>10 - Directors, Executive Officers and Corporate Governance</li>
+              <li>11 - Executive Compensation</li>
+              <li>12 - Security Ownership of Certain Beneficial Owners and Management and Related Stockholder Matters</li>
+              <li>13 - Certain Relationships and Related Transactions, and Director Independence</li>
+              <li>14 - Principal Accountant Fees and Services</li>
+          </ul>
+          </p>
+      </div>
+
+      <div class="card-footer">
+      </div>
+    </article>
+    <article class="card">
+      <div class="card-header">
+        <div>
+          <span><img width="60px" heigth="60px" src='{% static "dashboards/img/convsec.png" %}' /></span>
+          <h3 style="text-align:center">ConvSec | Sec Filings Extractor | Schema</h3>
+        </div>
+      </div>
+        </div>
+        <div style="text-align:center" class="card-body">
+        <span><img  width="1150px" height="450px" src='{% static "dashboards/img/convsec_schema.png" %}' /></span>
+      </div>
+        </div>
+      <div class="card-footer">
+      </div>
+    </article>
+    <article class="card">
+      <div class="card-header">
+        <div>
+          <span><img width="60px" heigth="60px" src='{% static "dashboards/img/drive.png" %}' /></span>
+            <a href="https://drive.google.com/drive/folders/1I9WAAAjn0xF3Uq7Uu13_lsEKhCF0dX66?usp=share_link">
+                <h3 style="text-align:center">ConvSec | Sec Filings Extractor | Google Drive - Sample Data</h3>
+            </a>
+        </div>
+      </div>
+      <div class="card-footer">
+      </div>
+    </article>
+  </body>
+
+  <footer>
+    <p class="copyright">© BloomShell 2022</p>
+  </footer>
+
+</main>
+
+{% endblock %}
+
+</html>

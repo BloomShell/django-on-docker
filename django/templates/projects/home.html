@@ -1,0 +1,87 @@
+{% load static %}
+{% block content %}
+
+<!DOCTYPE html>
+<html lang="en">
+
+    <head>
+        <meta charset="utf-8">
+        <title>Projects</title>
+        <!-- Favicons -->
+        <link rel="icon" type="image/x-icon" href='{% static "public/icons/letter.ico" %}'/>
+        <!-- Google Fonts -->
+        <link href="https://fonts.googleapis.com/css2?family=Lato:wght@300;400;700;900&family=Mukta:wght@300;400;600;700;800&family=Noto+Sans:wght@400;700&display=swap" rel="stylesheet">
+	<link href="https://fonts.cdnfonts.com/css/tesla-2" rel="stylesheet">
+        <link href="https://fonts.cdnfonts.com/css/matrix-code-nfi" rel="stylesheet">
+        <link href="https://fonts.cdnfonts.com/css/smw-text-nc" rel="stylesheet">        
+<!-- Template Main CSS File -->
+        <link rel="stylesheet" type="text/css" href='{% static "dashboards/css/base.css" %}'>
+        <link rel="stylesheet" type="text/css" href='{% static "dashboards/css/tables.css" %}'>
+        <link rel="stylesheet" type="text/css" href='{% static "dashboards/css/sliders.css" %}'>
+        <link rel="stylesheet" type="text/css" href='{% static "public/css/base.css" %}'>
+    </head>
+
+{% include 'public/navbar.html' %}
+
+ <!--Content starts-->
+ <body id="page-top">
+    <!-- Mashead header-->
+    <header class="masthead" >
+        <div class="container px-5">
+            <div class="row gx-5 align-items-center">
+                <div class="col-lg-6">
+                    <!-- Mashead text and app badges-->
+                    <div class="mb-5 mb-lg-0 text-center text-lg-start">
+                        <h1 class="display-1 lh-1 mb-3">Projects</h1>
+                        <p class="lead fw-normal text-muted mb-5">Explore the Portfolio of Investment Projects: Your Gateway to Diversified and Profitable Investment Opportunities!</p>
+                    </div>
+                </div>
+                <div class="col-lg-6">
+                    <!-- Masthead device mockup feature-->
+                    <div class="masthead-device-mockup">
+                            <span><img width="450px" height="450px" src='{% static "dashboards/img/Writing room-bro.svg" %}'></span>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </header>
+</body>
+
+<div class="articles">
+  <div class="card-header">
+      <div>
+        <span><img width="40px" height="40px" style="transform:rotate(90deg);" src='{% static "public/icons/index.png" %}' /></span>
+        <h3 style="font-family: 'SMW Text 2 NC';">Index</h3>
+      </div>
+    </div>
+  <article class="card">
+    <div class="card-body-table">
+      <table>
+        <thead>
+          <tr>
+            <th>Name</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr>
+            <td><a href="{% url 'projects:convsec' %}" style="color:#000000" class="hover-target">ConvSec | Sec Filings Extractor</a></td>
+          </tr>
+        </tbody>
+          <tbody>
+          <tr>
+            <td><a href="{% url 'projects:beecell' %}" style="color:#000000" class="hover-target">BeeCell | Automatic Portfolio Generator</a></td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+  </article>
+
+</div>
+
+<footer>
+  <p class="copyright">© BloomShell 2022</p>
+</footer>
+
+{% endblock %}
+
+</html>
