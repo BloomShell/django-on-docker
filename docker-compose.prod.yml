@@ -1,0 +1,52 @@
+version: '3.8'
+
+services:
+  web:
+    build:
+      context: ./django/
+    image: 778427007994.dkr.ecr.us-east-1.amazonaws.com/ilovebees-django:web
+    volumes:
+      - ./django/:/usr/src/app/
+      - static_files:/usr/src/app/staticfiles
+    env_file:
+      - ./.env/.env
+    expose:
+      - 8000
+
+  nginx-proxy:
+    container_name: nginx-proxy
+    build:
+      context: ./nginx/
+    image: 778427007994.dkr.ecr.us-east-1.amazonaws.com/ilovebees-django:nginx-proxy
+    restart: always
+    ports:
+      - "443:443"
+      - "80:80"
+    volumes:
+      - static_files:/home/app/staticfiles
+      - certs:/etc/nginx/certs
+      - html:/usr/share/nginx/html
+      - vhost:/etc/nginx/vhost.d
+      - /var/run/docker.sock:/tmp/docker.sock:ro
+    depends_on:
+      - web
+
+  nginx-proxy-letsencrypt:
+    image: jrcs/letsencrypt-nginx-proxy-companion
+    env_file:
+      - ./.env/.env.prod.proxy-companion
+    volumes:
+      - /var/run/docker.sock:/var/run/docker.sock:ro
+      - certs:/etc/nginx/certs
+      - html:/usr/share/nginx/html
+      - vhost:/etc/nginx/vhost.d
+      - acme:/etc/acme.sh
+    depends_on:
+      - nginx-proxy
+
+volumes:
+  static_files:
+  certs:
+  html:
+  vhost:
+  acme:
